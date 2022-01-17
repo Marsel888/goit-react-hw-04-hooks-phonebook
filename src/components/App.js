@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-
+import '../style.css'
 import { nanoid } from 'nanoid'
 import { useState } from 'react'
 import ContackForm from './contactForm/ContactForm'
@@ -8,7 +8,7 @@ import ContactList from './ContactList/ContactList'
 
 function App() {
   const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem('Контакты')),
+    JSON.parse(localStorage.getItem('Контакты')) || [],
   )
   const [filter, setFilter] = useState('')
 
@@ -47,6 +47,7 @@ function App() {
   const visibal = contacts.filter((contact) => {
     return contact.names.toLowerCase().includes(filter.toLowerCase())
   })
+
   return (
     <>
       <ContackForm submitForm={submitForm} />
